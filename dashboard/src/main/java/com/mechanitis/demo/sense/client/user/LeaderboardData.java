@@ -3,12 +3,13 @@ package com.mechanitis.demo.sense.client.user;
 import com.mechanitis.demo.sense.infrastructure.MessageListener;
 import javafx.collections.ObservableList;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.toList;
 import static javafx.application.Platform.runLater;
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -29,11 +30,9 @@ public class LeaderboardData implements MessageListener<String> {
 
         List<TwitterUser> topTweeters =
                 allTwitterUsers.values().stream()
-                               .sorted(Comparator
-                                               .comparing(TwitterUser::getNumberOfTweets)
-                                               .reversed())
+                               .sorted(comparingInt(TwitterUser::getNumberOfTweets).reversed())
                                .limit(NUMBER_OF_LEADERS)
-                               .collect(Collectors.toList());
+                               .collect(toList());
 
         runLater(() -> items.setAll(topTweeters));
     }
