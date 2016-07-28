@@ -23,14 +23,9 @@ public class MoodChartData implements MessageListener<TweetMood> {
         incrementPie(message.isConfused(), () -> confusedPortion.setPieValue(confusedPortion.getPieValue() + 1));
     }
 
-    private void incrementPie(boolean criteria, SomethingToDo thingToDo) {
+    private void incrementPie(boolean criteria, Runnable thingToDo) {
         if (criteria) {
-            thingToDo.doIt();
+            thingToDo.run();
         }
-    }
-
-    @FunctionalInterface
-    private interface SomethingToDo {
-        void doIt();
     }
 }
