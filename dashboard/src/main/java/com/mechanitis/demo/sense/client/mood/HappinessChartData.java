@@ -21,7 +21,10 @@ public class HappinessChartData implements MessageListener<TweetMood> {
 
         // TODO: create an empty bar for every minute for the next ten minutes
         IntStream.range(nowMinute, nowMinute + 10)
-                 .forEach(this::initialiseBarToZero);
+                 .forEach((minute) -> {
+                     dataSeries.getData().add(new Data<>(String.valueOf(minute), 0.0));
+                     minuteToDataPosition.put(minute, dataSeries.getData().size() - 1);
+                 });
     }
 
     @Override
@@ -37,11 +40,6 @@ public class HappinessChartData implements MessageListener<TweetMood> {
 
     public XYChart.Series<String, Double> getDataSeries() {
         return dataSeries;
-    }
-
-    private void initialiseBarToZero(int minute) {
-        dataSeries.getData().add(new Data<>(String.valueOf(minute), 0.0));
-        minuteToDataPosition.put(minute, dataSeries.getData().size() - 1);
     }
 
 }
