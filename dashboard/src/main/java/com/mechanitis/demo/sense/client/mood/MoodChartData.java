@@ -18,14 +18,18 @@ public class MoodChartData implements MessageListener<TweetMood> {
 
     @Override
     public void onMessage(TweetMood message) {
-        incrementPie(message.isHappy(), happyPortion);
-        incrementPie(message.isSad(), sadPortion);
-        incrementPie(message.isConfused(), confusedPortion);
+        incrementPie(message.isHappy(), () -> happyPortion.setPieValue(happyPortion.getPieValue() + 1));
+        incrementPie(message.isSad(), () -> sadPortion.setPieValue(sadPortion.getPieValue() + 1));
+        incrementPie(message.isConfused(), () -> confusedPortion.setPieValue(confusedPortion.getPieValue() + 1));
     }
 
-    private void incrementPie(boolean criteria, PieChart.Data portion) {
+    private void incrementPie(boolean criteria, SomethingToDo thingToDo) {
         if (criteria) {
-            portion.setPieValue(portion.getPieValue() + 1);
+            thingToDo.doIt();
         }
+    }
+
+    private interface SomethingToDo {
+        void doIt();
     }
 }
