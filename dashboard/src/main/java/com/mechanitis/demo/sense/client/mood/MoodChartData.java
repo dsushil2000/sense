@@ -29,6 +29,7 @@ public class MoodChartData implements MessageListener<TweetMood> {
         }
     }
 
+    @FunctionalInterface
     private interface SomethingToDo {
         void doIt();
     }
