@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-public class HappinessChartData implements MessageListener<Message> {
+public class HappinessChartData {
     private final XYChart.Series<String, Double> dataSeries = new XYChart.Series<>();
     private final Map<Integer, Integer> minuteToDataPosition = new HashMap<>();
 
@@ -27,24 +27,20 @@ public class HappinessChartData implements MessageListener<Message> {
 
         HashSet<Mood> payload = new HashSet<>(Arrays.asList(Mood.HAPPY));
 
-        onMessage(new Message(payload));
+    }
+
+    public XYChart.Series<String, Double> getDataSeries() {
+        return dataSeries;
+    }
+
+    private void someMethod(HashSet<Mood> payload) {
+        onMessage(Optional.of(new Message(payload)));
     }
 
     void onMessage(Optional<Message> message) {
         message.ifPresent(tweetMood -> {
             // do something
         });
-    }
-
-    @Override
-    void onMessage(Message message) {
-        if (message != null) {
-            // do something
-        }
-    }
-
-    public XYChart.Series<String, Double> getDataSeries() {
-        return dataSeries;
     }
 
     private void initialiseBarToZero(int minute) {
