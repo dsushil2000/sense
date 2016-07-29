@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import static com.mechanitis.demo.sense.mood.Mood.HAPPY;
 import static com.mechanitis.demo.sense.mood.Mood.SAD;
 import static com.mechanitis.demo.sense.twitter.TweetParser.getTweetMessageFrom;
+import static java.util.stream.Collectors.joining;
 
 public class Moods implements Analyser {
     private static final Map<String, Mood> WORD_TO_MOOD = new HashMap<>();
@@ -51,15 +52,13 @@ public class Moods implements Analyser {
     @Override
     public String analyseMood(String message) {
         String[] wordsInMessage = getTweetMessageFrom(message).split("\\s");
-        String moodsAsCsv = Stream.of(wordsInMessage)
-                                  .distinct()
-                                  .map((s) -> s.toLowerCase())
-                                  .map((key) -> WORD_TO_MOOD.get(key))
-                                  .filter(mood -> mood != null)
-                                  .distinct()
-                                  .map((mood) -> mood.name())
-                                  .collect(Collectors.joining(","));
-
-        return moodsAsCsv;
+        return Stream.of(wordsInMessage)
+                     .distinct()
+                     .map(String::toLowerCase)
+                     .map(WORD_TO_MOOD::get)
+                     .filter(mood -> mood != null)
+                     .distinct()
+                     .map(Enum::name)
+                     .collect(joining(","));
     }
 }
