@@ -27,7 +27,7 @@ public class HappinessChartData implements MessageListener<Message> {
 
         HashSet<Mood> payload = new HashSet<>(Arrays.asList(Mood.HAPPY));
 
-        onMessage(new Message(payload));
+        onMessage(Optional.of(new Message(payload)));
     }
 
     void onMessage(Optional<Message> message) {
