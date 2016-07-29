@@ -51,14 +51,13 @@ public class Moods implements Analyser {
     @Override
     public String analyseMood(String message) {
         String[] wordsInMessage = getTweetMessageFrom(message).split("\\s");
-        //TODO: figure out the unique moods in this message and return as CSV
         String moodsAsCsv = Stream.of(wordsInMessage)
                                .distinct()
-                               .map(String::toLowerCase)
-                               .map(WORD_TO_MOOD::get)
+                               .map((s) -> s.toLowerCase())
+                               .map((key) -> WORD_TO_MOOD.get(key))
                                .filter(mood -> mood != null)
                                .distinct()
-                               .map(Mood::name)
+                               .map((mood) -> mood.name())
                                .collect(Collectors.joining(","));
 
         return moodsAsCsv;
