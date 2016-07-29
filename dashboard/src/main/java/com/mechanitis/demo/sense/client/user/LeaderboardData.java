@@ -30,7 +30,7 @@ public class LeaderboardData implements MessageListener<String> {
                                                                   TwitterUser::new);
         twitterUser.incrementCount();
 
-        List<TwitterUser> topTweeters = allTwitterUsers.values().stream()
+        List<TwitterUser> topTweeters = allTwitterUsers.values().parallelStream()
                                                        .sorted(comparingInt(TwitterUser::getTweetCount).reversed())
                                                        .limit(NUMBER_OF_LEADERS)
                                                        .collect(Collectors.toList());

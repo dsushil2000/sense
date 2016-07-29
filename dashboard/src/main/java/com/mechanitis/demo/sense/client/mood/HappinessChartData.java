@@ -52,6 +52,7 @@ public class HappinessChartData implements MessageListener<Message> {
         minuteToDataPosition.put(minute, dataSeries.getData().size() - 1);
 
         IntStream.range(1, 5)
+                 .parallel()
                  .forEach(this::doSomething);
     }
 
