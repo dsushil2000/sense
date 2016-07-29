@@ -2,6 +2,7 @@ package com.mechanitis.demo.sense.mood;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -61,4 +62,16 @@ public class Moods implements Analyser {
                      .map(Enum::name)
                      .collect(joining(","));
     }
+
+    private void someMethod(HashSet<Mood> payload) {
+        onMessage(new Message(payload));
+    }
+
+    void onMessage(Message message) {
+        if (message != null) {
+            // do something
+        }
+    }
+
+
 }

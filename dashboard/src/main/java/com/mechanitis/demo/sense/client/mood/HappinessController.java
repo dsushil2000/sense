@@ -7,6 +7,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.util.StringConverter;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.valueOf;
@@ -35,4 +36,16 @@ public class HappinessController implements Initializable {
         });
 
     }
+
+    void someMethod(HashSet<Mood> payload) {
+        onMessage(new Message(payload));
+    }
+
+    void onMessage(Message message) {
+        if (message != null) {
+            // do something
+        }
+    }
+
+
 }
