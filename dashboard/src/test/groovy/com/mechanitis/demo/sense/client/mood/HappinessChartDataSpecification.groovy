@@ -24,7 +24,7 @@ class HappinessChartDataSpecification extends Specification {
         def happinessChartData = new HappinessChartData()
 
         when:
-        happinessChartData.onMessage(new TweetMood([Mood.HAPPY] as Set))
+        happinessChartData.onMessage(new Message([Mood.HAPPY] as Set))
 
         then:
         happinessChartData.dataSeries.data[0].YValue == 1

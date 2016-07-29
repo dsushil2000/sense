@@ -13,7 +13,7 @@ class MoodChartDataSpecification extends Specification {
         def moodChartData = new MoodChartData()
 
         when:
-        moodChartData.onMessage(new TweetMood([HAPPY] as Set))
+        moodChartData.onMessage(new Message([HAPPY] as Set))
 
         then:
         moodChartData.happyPortion.pieChartData.pieValue == 1
@@ -25,7 +25,7 @@ class MoodChartDataSpecification extends Specification {
         def moodChartData = new MoodChartData()
 
         when:
-        moodChartData.onMessage(new TweetMood([SAD] as Set))
+        moodChartData.onMessage(new Message([SAD] as Set))
 
         then:
         moodChartData.sadPortion.pieChartData.pieValue == 1
@@ -37,7 +37,7 @@ class MoodChartDataSpecification extends Specification {
         def moodChartData = new MoodChartData()
 
         when:
-        moodChartData.onMessage(new TweetMood([HAPPY, SAD] as Set))
+        moodChartData.onMessage(new Message([HAPPY, SAD] as Set))
 
         then:
         moodChartData.happyPortion.pieChartData.pieValue == 1

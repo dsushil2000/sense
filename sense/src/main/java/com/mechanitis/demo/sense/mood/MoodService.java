@@ -12,7 +12,7 @@ public class MoodService implements Runnable {
     public MoodService() {
         service = new Service("ws://localhost:8081/tweets/",
                               "/moods/", PORT,
-                              MoodAnalyser::analyseMood);
+                              Analyser::analyseMood);
     }
 
     @Override

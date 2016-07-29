@@ -14,7 +14,7 @@ class MoodAnalyserSpecification extends Specification {
     @Ignore("4")
     def 'should correctly identify happy messages'() {
         when:
-        def moodyMessage = MoodAnalyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so happy today"))
+        def moodyMessage = Analyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so happy today"))
 
         then:
         moodyMessage == "HAPPY"
@@ -23,7 +23,7 @@ class MoodAnalyserSpecification extends Specification {
     @Ignore("4")
     def 'should correctly identify happy messages that are not lower case'() {
         when:
-        def moodyMessage = MoodAnalyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so Awesome today"))
+        def moodyMessage = Analyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so Awesome today"))
 
         then:
         moodyMessage == "HAPPY"
@@ -32,7 +32,7 @@ class MoodAnalyserSpecification extends Specification {
     @Ignore("4")
     def 'should correctly identify sad messages'() {
         when:
-        def moodyMessage = MoodAnalyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so sad today"))
+        def moodyMessage = Analyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so sad today"))
 
         then:
         moodyMessage == "SAD"
@@ -41,7 +41,7 @@ class MoodAnalyserSpecification extends Specification {
     @Ignore("4")
     def 'should correctly identify mixed messages'() {
         when:
-        def moodyMessage = MoodAnalyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so sad today it almost makes me happy"))
+        def moodyMessage = Analyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I am so sad today it almost makes me happy"))
 
         then:
         moodyMessage == "SAD,HAPPY"
@@ -50,7 +50,7 @@ class MoodAnalyserSpecification extends Specification {
     @Ignore("4")
     def 'should correctly identify mixed messages with multiple moods'() {
         when:
-        def moodyMessage = MoodAnalyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "Yesterday I was sad sad sad, but today is awesome"))
+        def moodyMessage = Analyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "Yesterday I was sad sad sad, but today is awesome"))
 
         then:
         moodyMessage == "SAD,HAPPY"
@@ -59,7 +59,7 @@ class MoodAnalyserSpecification extends Specification {
     @Ignore("4")
     def 'should not have any mood for messages that are neither happy or sad'() {
         when:
-        def moodyMessage = MoodAnalyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I don't care"))
+        def moodyMessage = Analyser.analyseMood(format(TWITTER_MESSAGE_TEMPLATE, "I don't care"))
 
         then:
         moodyMessage == ""

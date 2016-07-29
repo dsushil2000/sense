@@ -5,10 +5,10 @@ import java.util.Set;
 import static com.mechanitis.demo.sense.client.mood.Mood.HAPPY;
 import static com.mechanitis.demo.sense.client.mood.Mood.SAD;
 
-public class TweetMood {
+public class Message {
     private final Set<Mood> moods;
 
-    public TweetMood(Set<Mood> moods) {
+    public Message(Set<Mood> moods) {
         this.moods = moods;
     }
 

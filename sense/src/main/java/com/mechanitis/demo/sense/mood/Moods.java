@@ -1,6 +1,8 @@
 package com.mechanitis.demo.sense.mood;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,8 +11,20 @@ import static com.mechanitis.demo.sense.mood.Mood.HAPPY;
 import static com.mechanitis.demo.sense.mood.Mood.SAD;
 import static com.mechanitis.demo.sense.twitter.TweetParser.getTweetMessageFrom;
 
-public class MoodAnalyser {
+public class Moods implements Analyser {
     private static final Map<String, Mood> WORD_TO_MOOD = new HashMap<>();
+    public static final List<String> HAPPY_WORDS = new ArrayList<>();
+
+    static {
+        HAPPY_WORDS.add("happy");
+        HAPPY_WORDS.add("good");
+        HAPPY_WORDS.add("great");
+        HAPPY_WORDS.add("keen");
+        HAPPY_WORDS.add("awesome");
+        HAPPY_WORDS.add("marvelous");
+        HAPPY_WORDS.add("yay");
+        HAPPY_WORDS.add("pleased");
+    }
 
     static {
         WORD_TO_MOOD.put("happy", HAPPY);
@@ -31,11 +45,12 @@ public class MoodAnalyser {
         WORD_TO_MOOD.put("awful", SAD);
     }
 
-    private MoodAnalyser() {
+    private Moods() {
     }
 
-    public static String analyseMood(String fullMessage) {
-        String[] wordsInMessage = getTweetMessageFrom(fullMessage).split("\\s");
+    @Override
+    public String analyseMood(String message) {
+        String[] wordsInMessage = getTweetMessageFrom(message).split("\\s");
         //TODO: figure out the unique moods in this message and return as CSV
         String moodsAsCsv = Stream.of(wordsInMessage)
                                .distinct()

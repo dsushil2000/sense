@@ -5,13 +5,16 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 import static java.time.LocalTime.now;
 
-public class HappinessChartData implements MessageListener<TweetMood> {
+public class HappinessChartData implements MessageListener<Message> {
     private final XYChart.Series<String, Double> dataSeries = new XYChart.Series<>();
     private final Map<Integer, Integer> minuteToDataPosition = new HashMap<>();
 
@@ -22,16 +25,23 @@ public class HappinessChartData implements MessageListener<TweetMood> {
         // TODO: create an empty bar for every minute for the next ten minutes
         IntStream.range(nowMinute, nowMinute + 10)
                  .forEach(this::initialiseBarToZero);
+
+
+        HashSet<Mood> payload = new HashSet<>(Arrays.asList(Mood.HAPPY));
+
+        onMessage(new Message(payload));
+    }
+
+    void onMessage(Optional<Message> message) {
+        message.ifPresent(tweetMood -> {
+            // do something
+        });#
     }
 
     @Override
-    public void onMessage(TweetMood message) {
-        if (message.isHappy()) {
-            int x = now().getMinute();
-
-            Integer dataIndex = minuteToDataPosition.get(x);
-            Data<String, Double> barForNow = dataSeries.getData().get(dataIndex);
-            barForNow.setYValue(barForNow.getYValue() + 1);
+    void onMessage(Message message) {
+        if (message != null) {
+            // do something
         }
     }
 
