@@ -12,8 +12,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-import static java.time.LocalTime.now;
-
 public class HappinessChartData implements MessageListener<Message> {
     private final XYChart.Series<String, Double> dataSeries = new XYChart.Series<>();
     private final Map<Integer, Integer> minuteToDataPosition = new HashMap<>();
@@ -53,10 +51,8 @@ public class HappinessChartData implements MessageListener<Message> {
         dataSeries.getData().add(new Data<>(String.valueOf(minute), 0.0));
         minuteToDataPosition.put(minute, dataSeries.getData().size() - 1);
 
-        final int[] ints = {1, 2, 3, 4, 5};
-        for (int i = 0; i < ints.length; i++) {
-            doSomething(ints[i]);
-        }
+        IntStream.range(1, 5)
+                 .forEach(this::doSomething);
     }
 
     private void doSomething(int anInt) {
