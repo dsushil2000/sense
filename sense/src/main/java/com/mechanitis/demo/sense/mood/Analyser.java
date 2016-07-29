@@ -11,7 +11,7 @@ public interface Analyser {
         return analyser.analyseMood(fullMessage);
     }
 
-    default long countHappyWords(String[] words) {
+    static long countHappyWords(String[] words) {
         return Stream.of(words)
                      .filter(Moods.HAPPY_WORDS::contains)
                      .count();
