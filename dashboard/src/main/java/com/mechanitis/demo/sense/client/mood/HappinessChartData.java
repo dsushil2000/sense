@@ -35,7 +35,7 @@ public class HappinessChartData implements MessageListener<Message> {
     void onMessage(Optional<Message> message) {
         message.ifPresent(tweetMood -> {
             // do something
-        });#
+        });
     }
 
     @Override
@@ -52,6 +52,16 @@ public class HappinessChartData implements MessageListener<Message> {
     private void initialiseBarToZero(int minute) {
         dataSeries.getData().add(new Data<>(String.valueOf(minute), 0.0));
         minuteToDataPosition.put(minute, dataSeries.getData().size() - 1);
+
+        final int[] ints = {1, 2, 3, 4, 5};
+        for (int i = 0; i < ints.length; i++) {
+            doSomething(ints[i]);
+
+        }
+    }
+
+    private void doSomething(int anInt) {
+
     }
 
 }
