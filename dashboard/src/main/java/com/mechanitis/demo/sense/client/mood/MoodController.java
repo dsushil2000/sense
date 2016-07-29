@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 
 import java.util.HashSet;
-import java.util.Optional;
 
 public class MoodController {
     @FXML private PieChart overallMood;
@@ -14,13 +13,13 @@ public class MoodController {
     }
 
     private void someMethod(HashSet<Mood> payload) {
-        onMessage(Optional.of(new Message(payload)));
+        onMessage(new Message(payload));
     }
 
-    void onMessage(Optional<Message> message) {
-        message.ifPresent(message1 -> {
+    void onMessage(Message message) {
+        if (message != null) {
             // do something
-        });
+        }
     }
 
 }
