@@ -36,16 +36,4 @@ public class HappinessController implements Initializable {
         });
 
     }
-
-    void someMethod(HashSet<Mood> payload) {
-        onMessage(new Message(payload));
-    }
-
-    void onMessage(Message message) {
-        if (message != null) {
-            // do something
-        }
-    }
-
-
 }
