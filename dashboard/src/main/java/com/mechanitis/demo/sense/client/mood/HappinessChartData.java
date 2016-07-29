@@ -34,13 +34,13 @@ public class HappinessChartData {
     }
 
     private void someMethod(HashSet<Mood> payload) {
-        onMessage(Optional.of(new Message(payload)));
+        onMessage(new Message(payload));
     }
 
-    void onMessage(Optional<Message> message) {
-        message.ifPresent(tweetMood -> {
+    void onMessage(Message message) {
+        if (message != null) {
             // do something
-        });
+        }
     }
 
     private void initialiseBarToZero(int minute) {
