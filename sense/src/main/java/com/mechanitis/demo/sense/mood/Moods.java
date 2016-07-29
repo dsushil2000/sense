@@ -52,13 +52,13 @@ public class Moods implements Analyser {
     public String analyseMood(String message) {
         String[] wordsInMessage = getTweetMessageFrom(message).split("\\s");
         String moodsAsCsv = Stream.of(wordsInMessage)
-                               .distinct()
-                               .map((s) -> s.toLowerCase())
-                               .map((key) -> WORD_TO_MOOD.get(key))
-                               .filter(mood -> mood != null)
-                               .distinct()
-                               .map((mood) -> mood.name())
-                               .collect(Collectors.joining(","));
+                                  .distinct()
+                                  .map((s) -> s.toLowerCase())
+                                  .map((key) -> WORD_TO_MOOD.get(key))
+                                  .filter(mood -> mood != null)
+                                  .distinct()
+                                  .map((mood) -> mood.name())
+                                  .collect(Collectors.joining(","));
 
         return moodsAsCsv;
     }
