@@ -44,7 +44,7 @@ public class HappinessChartData {
         dataSeries.getData().add(new Data<>(String.valueOf(minute), 0.0));
         minuteToDataPosition.put(minute, dataSeries.getData().size() - 1);
 
-        IntStream.range(1, 5)
+        IntStream.rangeClosed(1, 5)
                  .parallel()
                  .forEach(this::doSomething);
     }
