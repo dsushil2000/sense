@@ -25,7 +25,7 @@ class TweetParserSpecification extends Specification {
 
     def 'should return the tweet itself from the full Twitter content'() {
         when:
-        def tweetContent = TweetParser.getTweetMessageFrom(EXAMPLE_INPUT)
+        def tweetContent = Parser.getTextFrom(EXAMPLE_INPUT)
 
         then:
         tweetContent == "A simplistic approach to your life is a healthy antidote to yo... More for Sagittarius http:\\/\\/t.co\\/cRS9M0bneh"
@@ -33,7 +33,7 @@ class TweetParserSpecification extends Specification {
 
     def 'should return the user twitter handle'() {
         when:
-        def location = TweetParser.getTwitterHandleFromTweet(EXAMPLE_INPUT)
+        def location = Parser.getUsernameFromMessage(EXAMPLE_INPUT)
 
         then:
         location == 'cupcakecutie07'

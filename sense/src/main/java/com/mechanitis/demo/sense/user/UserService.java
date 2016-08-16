@@ -1,7 +1,7 @@
 package com.mechanitis.demo.sense.user;
 
 import com.mechanitis.demo.sense.infrastructure.Service;
-import com.mechanitis.demo.sense.twitter.TweetParser;
+import com.mechanitis.demo.sense.twitter.Parser;
 
 public class UserService implements Runnable {
     private static final int PORT = 8083;
@@ -10,7 +10,7 @@ public class UserService implements Runnable {
     public UserService() {
         service = new Service("ws://localhost:8081/tweets/",
                               "/users/", PORT,
-                              TweetParser::getTwitterHandleFromTweet);
+                              Parser::getUsernameFromMessage);
     }
 
     @Override
