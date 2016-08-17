@@ -33,7 +33,7 @@ class TweetParserSpecification extends Specification {
 
     def 'should return the user twitter handle'() {
         when:
-        def location = Parser.getValueFromMessage(EXAMPLE_INPUT, "\"screen_name\":\"")
+        def location = Parser.getValueFromMessage(EXAMPLE_INPUT, "\"screen_name\":\"", "\"screen_name\":\"")
 
         then:
         location == 'cupcakecutie07'

@@ -10,20 +10,28 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParserTest {
+    private static final String MESSAGE_BODY = "This is the content";
+
     @Test
-    @DisplayName("should return the tweet itself from the full Twitter JSON")
-    void testGetTweetContent() {
+    @DisplayName("should return the message text itself from the full JSON")
+    void testGetMessageContent() {
         final String fieldName = "\"text\":\"";
-        String tweetContent = Parser.getValueFromMessage(EXAMPLE_INPUT, fieldName);
-        assertEquals("This is the content of the Tweet", tweetContent);
+        String tweetContent = Parser.getValueFromMessage(EXAMPLE_INPUT, "\"screen_name\":\"");
+        assertEquals(MESSAGE_BODY, tweetContent);
+    }
+
+    @Test
+    @DisplayName("should return the message text itself from the full JSON")
+    void testGetUsernameContent() {
+        String tweetContent = Parser.getUsernameFromMessage(EXAMPLE_INPUT);
+        assertEquals(MESSAGE_BODY, tweetContent);
     }
 
     @Test
     public void shouldWorkWellInAMap() {
         String username = "dude";
         Stream<String> messages = Stream.of(EXAMPLE_INPUT);
-        List<String> userMessages = messages.map((message) -> Parser
-                .getValueFromMessage(message, "\"screen_name\":\""))
+        List<String> userMessages = messages.map((message) -> Parser.getValueFromMessage(message, "\"screen_name\":\""))
                                             .filter(messageUser -> messageUser.equals(username))
                                             .collect(Collectors.toList());
     }
@@ -38,7 +46,7 @@ public class ParserTest {
 
     private static final String EXAMPLE_INPUT = "tweet = {\"created_at\":\"Tue Jan 27 12:37:11 +0000 2015\"," +
                                                 "\"id\":560053908144275456,\"id_str\":\"560053908144275456\"," +
-                                                "\"text\":\"This is the content of the Tweet\",\"source\":\"\\u003ca " +
+                                                "\"text\":\"" + MESSAGE_BODY + "\",\"source\":\"\\u003ca " +
                                                 "href=\\\"http:\\/\\/www.twittascope.com\\\" " +
                                                 "rel=\\\"nofollow\\\"\\u003eTwittascope\\u003c\\/a\\u003e\"," +
                                                 "\"truncated\":false,\"in_reply_to_status_id\":null," +
@@ -69,9 +77,11 @@ public class ParserTest {
                                                 "\"profile_text_color\":\"362720\"," +
                                                 "\"profile_use_background_image\":true," +
                                                 "\"profile_image_url\":\"http:\\/\\/pbs.twimg" +
-                                                ".com\\/profile_images\\/3720790185\\/d65b1fe7b8245a389901dab26c7ec77d_normal.jpeg\"," +
+                                                ".com\\/profile_images\\/3720790185\\/d65b1fe7b8245a389901dab26c7ec77d_normal.jpeg\","
+                                                +
                                                 "\"profile_image_url_https\":\"https:\\/\\/pbs.twimg" +
-                                                ".com\\/profile_images\\/3720790185\\/d65b1fe7b8245a389901dab26c7ec77d_normal.jpeg\",\"default_profile\":false," +
+                                                ".com\\/profile_images\\/3720790185\\/d65b1fe7b8245a389901dab26c7ec77d_normal.jpeg\",\"default_profile\":false,"
+                                                +
                                                 "\"default_profile_image\":false,\"following\":null," +
                                                 "\"follow_request_sent\":null,\"notifications\":null}," +
                                                 "\"geo\":null,\"coordinates\":null,\"place\":null," +

@@ -36,7 +36,7 @@ public class MoodAnalyser {
     }
 
     public static String analyseMood(String message) {
-        String[] wordsInMessage = Parser.getValueFromMessage(message, "\"text\":\"").split("\\s");
+        String[] wordsInMessage = Parser.getValueFromMessage(message, "\"screen_name\":\"").split("\\s");
         return Stream.of(wordsInMessage)
                      .distinct()
                      .map(String::toLowerCase)
