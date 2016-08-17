@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6545def1-b59f-4db2-a361-a54dc92e5cfa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/Parser.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/TweetParser.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/TweetParserTest.java" afterPath="$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/ParserTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/mood/MoodAnalyser.java" afterPath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/mood/MoodAnalyser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/Parser.java" afterPath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/Parser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/user/UserService.java" afterPath="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/user/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/ParserTest.java" afterPath="$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/ParserTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/TweetParserSpecification.groovy" afterPath="$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/TweetParserSpecification.groovy" />
     </list>
     <ignored path="$PROJECT_DIR$/service/.gradle/" />
@@ -52,8 +51,8 @@
       <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="155">
+              <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -409,8 +408,8 @@
         <option value="$PROJECT_DIR$/service/src/main/java/com/mechanitis/demo/sense/infrastructure/ConfigException.java" />
         <option value="$PROJECT_DIR$/service/src/test/unit/com/mechanitis/demo/sense/infrastructure/SingletonEndpointConfiguratorTest.java" />
         <option value="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/TweetParser.java" />
-        <option value="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/mood/MoodAnalyser.java" />
         <option value="$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/ParserTest.java" />
+        <option value="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/mood/MoodAnalyser.java" />
         <option value="$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/Parser.java" />
       </list>
     </option>
@@ -1180,7 +1179,8 @@
       <workItem from="1470060329810" duration="10000" />
       <workItem from="1470060409160" duration="11276000" />
       <workItem from="1470303670283" duration="194000" />
-      <workItem from="1471361008526" duration="576000" />
+      <workItem from="1471361008526" duration="2169000" />
+      <workItem from="1471424460551" duration="45000" />
     </task>
     <task id="LOCAL-00001" summary="Simplified tweet parser test">
       <created>1470063480784</created>
@@ -1189,7 +1189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470063480784</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Extract method">
+      <created>1471361958695</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1471361958695</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1225,7 +1232,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75255000" />
+    <option name="totallyTimeSpent" value="76893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2182" height="1462" extended-state="6" />
@@ -1340,14 +1347,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Simplified tweet parser test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplified tweet parser test" />
+    <MESSAGE value="Extract method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extract method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/mood/MoodAnalyser.java</url>
-          <line>36</line>
+          <line>37</line>
           <properties class="com.mechanitis.demo.sense.mood.MoodAnalyser" method="analyseMood" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -1391,13 +1399,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/main/resources/com/mechanitis/demo/sense/client/leaderboard.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/main/java/com/mechanitis/demo/sense/client/mood/MoodController.java">
@@ -1408,13 +1416,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/main/resources/com/mechanitis/demo/sense/client/mood.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="5" column="56" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="56" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/main/java/com/mechanitis/demo/sense/client/mood/HappinessController.java">
@@ -1425,13 +1433,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/main/resources/com/mechanitis/demo/sense/client/happy.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/src/main/resources/dashboard.css">
@@ -1678,6 +1686,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+          <folding>
+            <marker date="1471362733525" expanded="false" signature="48:146" ph="..." />
+            <marker date="1471362733525" expanded="true" signature="298:516" ph="{...}" />
+            <marker date="1471362733525" expanded="true" signature="554:584" ph="{...}" />
+            <marker date="1471362733525" expanded="true" signature="626:657" ph="{...}" />
+            <marker date="1471362733525" expanded="true" signature="702:742" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1690,28 +1705,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sense/src/test/unit/com/mechanitis/demo/sense/twitter/ParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="25" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="248">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <marker date="1471362733548" expanded="false" signature="51:274" ph="..." />
+            <marker date="1471362733548" expanded="true" signature="306:389" ph="@{...}" />
+            <marker date="1471362733548" expanded="true" signature="421:632" ph="{...}" />
+            <marker date="1471362733548" expanded="true" signature="683:1094" ph="{...}" />
+            <marker date="1471362733548" expanded="true" signature="1096:1370" ph="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/mood/MoodAnalyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+        <state relative-caret-position="773">
+          <caret line="38" column="52" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
-            <marker date="1471358289084" expanded="false" signature="48:352" ph="..." />
-            <marker date="1471358289084" expanded="true" signature="469:1135" ph="{...}" />
-            <marker date="1471358289084" expanded="true" signature="1164:1171" ph="{...}" />
-            <marker date="1471358289084" expanded="true" signature="1226:1635" ph="{...}" />
+            <marker date="1471362733590" expanded="false" signature="48:334" ph="..." />
+            <marker date="1471362733590" expanded="true" signature="451:1117" ph="{...}" />
+            <marker date="1471362733590" expanded="true" signature="1146:1153" ph="{...}" />
+            <marker date="1471362733590" expanded="true" signature="1208:1647" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sense/src/main/java/com/mechanitis/demo/sense/twitter/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="155">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
           <folding />
         </state>
       </provider>

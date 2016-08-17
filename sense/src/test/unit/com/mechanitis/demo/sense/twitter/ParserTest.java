@@ -13,7 +13,8 @@ public class ParserTest {
     @Test
     @DisplayName("should return the tweet itself from the full Twitter JSON")
     void testGetTweetContent() {
-        String tweetContent = Parser.getTextFrom(EXAMPLE_INPUT);
+        final String fieldName = "\"text\":\"";
+        String tweetContent = Parser.getValueFromMessage(EXAMPLE_INPUT, fieldName);
         assertEquals("This is the content of the Tweet", tweetContent);
     }
 
@@ -21,7 +22,8 @@ public class ParserTest {
     public void shouldWorkWellInAMap() {
         String username = "dude";
         Stream<String> messages = Stream.of(EXAMPLE_INPUT);
-        List<String> userMessages = messages.map(Parser::getUsernameFromMessage)
+        List<String> userMessages = messages.map((message) -> Parser
+                .getValueFromMessage(message, "\"screen_name\":\""))
                                             .filter(messageUser -> messageUser.equals(username))
                                             .collect(Collectors.toList());
     }
