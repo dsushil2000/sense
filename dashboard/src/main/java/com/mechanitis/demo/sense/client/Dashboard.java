@@ -26,13 +26,8 @@ public class Dashboard extends Application {
         userServiceEndpoint.addListener(leaderboardData);
         userServiceEndpoint.connect();
 
-        ClientEndpoint<TweetMood> moodServiceEndpoint = new ClientEndpoint<>("ws://localhost:8082/moods/", new
-                MessageHandler<TweetMood>() {
-            @Override
-            public TweetMood processMessage(String message) {
-                return MoodsParser.parse(message);
-            }
-        });
+        ClientEndpoint<TweetMood> moodServiceEndpoint
+                = new ClientEndpoint<>("ws://localhost:8082/moods/", MoodsParser::parse);
         moodServiceEndpoint.addListener(moodChartData);
         moodServiceEndpoint.addListener(happinessChartData);
         moodServiceEndpoint.connect();
