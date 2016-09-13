@@ -21,7 +21,6 @@ public class Dashboard extends Application {
         MoodChartData moodChartData = new MoodChartData();
         HappinessChartData happinessChartData = new HappinessChartData();
 
-        // TODO: wire up the models to the services they're getting the data from
         ClientEndpoint<String> userServiceEndpoint = ClientEndpoint
                 .createPassthroughEndpoint("ws://localhost:8083/users/");
         userServiceEndpoint.addListener(leaderboardData);
@@ -35,6 +34,7 @@ public class Dashboard extends Application {
             }
         });
         moodServiceEndpoint.addListener(moodChartData);
+        moodServiceEndpoint.addListener(happinessChartData);
         moodServiceEndpoint.connect();
 
         // initialise the UI
@@ -47,7 +47,7 @@ public class Dashboard extends Application {
         DashboardController dashboardController = loader.getController();
         dashboardController.getLeaderboardController().setData(leaderboardData);
         dashboardController.getMoodController().setData(moodChartData);
-//        dashboardController.getHappinessController().setData(happinessChartData);
+        dashboardController.getHappinessController().setData(happinessChartData);
 
         // let's go!
         primaryStage.setScene(scene);
